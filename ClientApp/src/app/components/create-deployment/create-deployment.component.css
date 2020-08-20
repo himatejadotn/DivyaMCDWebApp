@@ -1,0 +1,30 @@
+.wrapper{
+    width: 45%;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #e8e8e870;
+    box-shadow: 3px 3px 7px 0px #ddd;
+}
+buttonwrapper-one{
+    float: right;
+}
+label.marketfield {
+    display: block;
+}
+label.marketfield span {
+    float: right;
+}
+label.targetwrapper{
+    display: block;
+}
+label.targetwrapper span {
+    float: right;
+}
+form div {
+    margin-bottom: 15px;
+}
+.buttonwrapper{
+    text-align: right;
+}

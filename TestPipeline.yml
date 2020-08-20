@@ -1,0 +1,26 @@
+
+trigger:
+- master
+pool:
+  vmImage: 'ubuntu-latest'
+  demands: npm
+variables:
+  system.debug: true
+steps:
+  - task: NodeTool@0
+    inputs:    
+      versionSpec: '10.x'
+  - script:
+      npm install @angular/cli -g
+    workingDirectory: 'ClientApp'
+  - script:
+      npm install
+    workingDirectory: 'ClientApp'
+  - script:  
+      ng build 
+    displayName: 'ng build'
+    workingDirectory: ClientApp
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'ClientApp/dist'
+      ArtifactName: angular2 

@@ -1,0 +1,68 @@
+<div class="wrapper">
+    <form [formGroup]="deploymentFormGroup">
+        <div>
+            <div>
+                <label for='release'>Release
+                    <div class="buttonwrapper-one">
+                        <button style='margin-left: 10' class='btn btn-info' (click)="showAddRelease()">Add
+                            Release</button>
+
+                        <button [disabled]="buttonDisabled" style='margin-left: 15px' class='btn btn-info'
+                            (click)="showEditRelease()">Edit Release</button>
+                    </div>
+                </label>
+                <div *ngIf="(registerFormControl.release.touched || submitted) && registerFormControl.release.errors?.required"
+                    class="text-danger">
+                    Please select release name
+                </div>
+                <select id='release' [value]="selectedReleaseId" (change)="onChange($event)" class='form-control'
+                    formControlName='release'>
+                    <option disabled>Select a Release</option>
+                    <option *ngFor="let release of releases" [value]="release.id">
+                        {{release.releaseName}}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <label class="targetwrapper" for='target'>Target
+                    <div class="buttonwrapper-one">
+                        <button style='margin-left: 10' class='btn btn-info' (click)="showCreateTarget()">Add
+                            Target</button>
+                            <button   style='margin-left: 15px' class='btn btn-info'
+                            (click)="showEditTarget()">Edit Target</button>
+                    </div>
+                    <!-- <button style='margin-left: 10' type='button' class='btn btn-secondary btn-sm'>Add Target</button> -->
+                </label>
+
+
+                <div *ngIf="(registerFormControl.target.touched || submitted) && registerFormControl.target.errors?.required"
+                    class="text-danger" class="text-danger">
+                    Please select target name
+                </div>
+                <select id='target' [value]="selectedTargetId"  (change)="onChangeTarget($event)" class='form-control' formControlName='target'>
+                    <option disabled>Select a target </option>
+                    <option *ngFor="let target of targets" [value]="target.targetId">
+                        {{target.targetName}}
+                    </option>
+                </select>
+
+                <span style="text-align: center;">Target Store Count: {{targetStoreCount}} </span>
+            </div>
+            <div>
+                <label for='cap'>Store Limit</label>
+                <input id='cap' type='text' class='form-control' disabled formControlName='storeLimit' />
+            </div>
+            <div *ngIf="(registerFormControl.storeLimit.touched || submitted) && registerFormControl.storeLimit.errors?.required"
+                class="text-danger">
+                Please enter storeLimit
+            </div>
+            <div class="buttonwrapper">
+                <button class='btn btn-success' (click)="showDeployment()">Next</button>
+            </div>
+        </div>
+    </form>
+</div>
+<app-add-release-overlay></app-add-release-overlay>
+<app-edit-release-overlay (messageEvent)="receiveReleaseMessage($event)"></app-edit-release-overlay>
+<app-create-target-overlay (messageEvent)="receiveMessage($event)"></app-create-target-overlay>
+<app-edit-target-overlay (messageEvent)="receiveMessage($event)" [edited]="selectedTarget"></app-edit-target-overlay>

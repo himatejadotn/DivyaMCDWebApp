@@ -1,0 +1,31 @@
+
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';  
+
+@import url(~ag-grid-community/dist/styles/ag-grid.css);
+@import url(~ag-grid-community/dist/styles/ag-theme-balham.css);
+@import url(~ag-grid-community/dist/styles/ag-theme-balham-dark.css);
+
+ 
+
+.ag-theme-alpine {
+    @include ag-theme-alpine();
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.buttoncls{
+   border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: .9375rem;
+  border-radius: .25rem; color: #fff;
+  background-color:#004db4 ;
+  border-color:#004db4 ; height: 24px; line-height: 12px;
+}
+
+.h2{
+  font-size: 20px;
+  font-weight: 500;
+}
+/* .label{
+  font-size:18px !important ;
+} */

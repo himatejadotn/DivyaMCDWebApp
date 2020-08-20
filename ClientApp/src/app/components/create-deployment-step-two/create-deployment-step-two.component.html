@@ -1,0 +1,79 @@
+<!-- <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+    <div class="card m-3">
+        <h5 class="card-header">Step 2</h5>
+        <div *ngFor="let deployment of t.controls; let i = index" class="list-group list-group-flush">
+            <div class="list-group-item">
+                <div [formGroup]="deployment" class="form-row">
+                    <div class="form-group col-3">
+                        <label>Effective Date</label>
+                        <input type="text" class="form-control mb-3" placeholder="mm/dd/yyyy" bsDatepicker
+                            [bsConfig]="{ isAnimated: true }" 
+                            [minDate]="minDate"  
+                            (bsValueChange)="onValueChange($event,i)"
+                            formControlName="effectiveDate" />
+                        <div class="text-danger" *ngIf="(deployment.controls.effectiveDate.touched || submitted) && deployment.controls.effectiveDate.errors?.unique"> Unable to schedule multiple deployments for the same date </div>
+                        <div class="text-danger" *ngIf="(deployment.controls.effectiveDate.touched || submitted) && deployment.controls.effectiveDate.errors?.required">Effective Date is required </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <label>Deployment Name</label>
+                        <input type="text" formControlName="deploymentName" class="form-control" />
+                        <div class="text-danger" *ngIf="(deployment.controls.deploymentName.touched || submitted) && deployment.controls.deploymentName.errors?.unique">Deployment name is duplicate </div>
+                        <div class="text-danger" *ngIf="(deployment.controls.deploymentName.touched || submitted) && deployment.controls.deploymentName.errors?.required">Deployment name is required </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <label>Comments</label>
+                        <textarea cols="40" rows="3" formControlName="comments" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center border-top-0">
+            <button class="btn btn-primary mr-1">Submit</button>
+            <button class="btn btn-secondary" type="button" (click)="Back()">Back</button>
+             <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button> 
+
+        </div>
+    </div>
+</form> -->
+
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+    <div class="card m-3">
+        <h5 class="card-header">Step 2</h5>
+        <div class="list-group list-group-flush">
+            <div class="list-group-item">
+                <div [formGroup]="dynamicForm" class="form-row">
+                    <div class="form-group col-3">
+                        <label>Effective Date</label>
+                        <input type="text" class="form-control mb-3" placeholder="mm/dd/yyyy" bsDatepicker
+                            [bsConfig]="{ isAnimated: true,showWeekNumbers:false }" [minDate]="minDate"  
+                            (bsValueChange)="onValueChange($event)" formControlName="effectiveDate" />
+                        <div class="text-danger"
+                            *ngIf="(dynamicForm.controls.effectiveDate.touched || submitted) && dynamicForm.controls.effectiveDate.errors?.unique">
+                            Unable to schedule multiple deployments for the same date </div>
+                        <div class="text-danger"
+                            *ngIf="(dynamicForm.controls.effectiveDate.touched || submitted) && dynamicForm.controls.effectiveDate.errors?.required">
+                            Effective Date is required </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <label>Deployment Name</label>
+                        <input type="text" formControlName="deploymentName" class="form-control" />
+                        <div class="text-danger"
+                            *ngIf="(dynamicForm.controls.deploymentName.touched || submitted) && dynamicForm.controls.deploymentName.errors?.unique">
+                            Deployment name is duplicate </div>
+                        <div class="text-danger"
+                            *ngIf="(dynamicForm.controls.deploymentName.touched || submitted) && dynamicForm.controls.deploymentName.errors?.required">
+                            Deployment name is required </div>
+                    </div>
+                    <div class="form-group col-3">
+                        <label>Comments</label>
+                        <textarea cols="40" rows="3" formControlName="comments" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center border-top-0">
+            <button class="btn btn-secondary" type="button" (click)="Back()">Back</button> &nbsp;
+            <button class="btn btn-primary mr-1">Submit</button>
+        </div>
+    </div>
+</form>

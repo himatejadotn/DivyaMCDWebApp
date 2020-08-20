@@ -1,0 +1,15 @@
+<div class="Monitoring">
+    <div class="column admin-page-header">
+        <input id="tab1" class="admin-tabs" type="radio" name="tabs" (click)="onTabClick(1)"  checked>
+        <label class="admin-tabs-label" for="tab1"><i class="fa fa-user-cog"></i>Recent Deployment</label>
+
+        <input id="tab2" class="admin-tabs" type="radio" (click)="onTabClick(2)" name="tabs">
+        <label class="admin-tabs-label" for="tab2"><i class="fa fa-ticket-alt"></i>Upcoming Deployment</label>
+    </div>
+    <section id="content1" class="container-fluid" *ngIf="!upcomingReleaseComponent">
+       <app-recent-release></app-recent-release>
+    </section>
+    <section id="content1" class="container-fluid" *ngIf="upcomingReleaseComponent">
+        <app-upcoming-release></app-upcoming-release>
+      </section>
+</div>

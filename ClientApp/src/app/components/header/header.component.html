@@ -1,0 +1,33 @@
+<form [formGroup]="headerFormGroup">
+<header *ngIf="!router.url.includes('access-denied')">
+    <nav class="navbar navbar-expand-md navbar-toggleable-md">
+       
+          <a class="navbar-brand" [routerLink]="['/monitoring']">Deployment Console</a> 
+<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+          
+      <div class="mid-wrapper">
+        <div class="navbar-start"></div>
+        <div class="navbar-end"></div>
+            <div class="marketWrapper">
+                <select id="market" class='form-control'  formControlName="market"  (change)="onChangeMarket($event)">
+                  <option selected>Select Market</option>
+                  <option *ngFor="let market of markets"  [value]="market.shortName" >{{market.shortName}}</option>
+                </select>
+            </div>
+            <ul class="navbar-nav flex-grow">
+              <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link" [routerLink]="['/monitoring']">Monitoring</a>
+              </li>
+              <li class="nav-item-two" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link" [routerLink]="['/createdeployment']">Deployment</a>
+              </li>
+            </ul>
+          </div>
+       
+      </nav>
+  </header>
+</form>
+  

@@ -1,0 +1,63 @@
+<div>
+  <h2>Deployment Details</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <label>Name:</label> <span>  {{deploynmentDetail['deploymentName']|uppercase}}</span> 
+      </div>
+      <div class="col">
+        <label>Comments:</label><span> {{deploynmentDetail['comments']}}</span>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+      <label>Status:</label> <span>{{deploynmentDetail['status']}}</span>  
+      </div>
+      <div class="col">
+     <label>Effective Date:</label><span> {{deploynmentDetail['effectiveDate']}}</span> 
+      </div>
+    </div>
+    <br>
+   <div> <h2 class="left">Target Restaurants</h2></div>
+   <div class="column iconedit" *ngIf="deploynmentDetail['cancel']">
+    <button class="btn-primary"  style="cursor: pointer;" (click)="cancelDeploynment()" aria-hidden="true">Cancel Deployment</button>
+  </div>
+    <div class="columns">
+        <!-- [modules]="modules" -->
+        <div class="column agGrid">
+            <ag-grid-angular class="ag-theme-balham" style="width: 100%; height: 347px;"
+            [modules]="modules"
+            [columnDefs]="columnDefs"
+            [defaultColDef]="defaultColDef"
+            [suppressRowClickSelection]="true" 
+            [rowData]="[gridData]"
+            (gridReady)="onGridReady($event)"
+            [pagination]="true"
+            [paginationPageSize]="paginationPageSize"
+            [paginationNumberFormatter]="paginationNumberFormatter">
+            </ag-grid-angular>
+        </div>
+</div>
+  </div>
+
+
+  <div class="modal" tabindex="-1" role="dialog" id="app-cancel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content contentWidth">
+        <div class="modal-header">
+          <h2 class="modal-title">Cancel Deployment</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to Cancel this Deployment?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="Canceldeploynmentsstatus()">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
